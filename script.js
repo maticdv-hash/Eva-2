@@ -13,3 +13,24 @@ const mensajeError = document.getElementById("mensajeError");
 const tablaColaboradores = document.getElementById("tablaColaboradores");
 
 const busquedaInput = document.getElementById("busqueda");
+
+function validarFormulario(nombre, apellido, cargo, correo) {
+
+    if (!nombre || !apellido || !cargo || !correo) {
+        mensajeError.textContent = "Todos los campos son obligatorios";
+        return false;
+    }
+
+    if (!correo.includes("@")) {
+        mensajeError.textContent = "Ingrese un correo válido";
+        return false;
+    }
+
+    if (!correo.endsWith("@empresa.cl")) {
+        mensajeError.textContent = "El correo debe pertenecer al dominio @empresa.cl";
+        return false;
+    }
+
+    mensajeError.textContent = "";
+    return true;
+}
