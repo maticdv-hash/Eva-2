@@ -132,6 +132,19 @@ formulario.addEventListener("submit", function(event) {
 
     if (validarFormulario(nombre, apellido, cargo, correo)) {
 
+        const colaboradorExistente = colaboradores.find(function(colaborador) {
+            
+            return colaborador.correo.toLowerCase() === correo.toLowerCase();
+        
+        });
+        
+        if (colaboradorExistente) {
+            
+            mensajeError.textContent = "Este usuario ya está registrado";
+            
+            return;
+        }
+
     const colaborador = {
         nombre: nombre,
         apellido: apellido,
