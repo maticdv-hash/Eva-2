@@ -34,3 +34,16 @@ function validarFormulario(nombre, apellido, cargo, correo) {
     mensajeError.textContent = "";
     return true;
 }
+
+formulario.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const nombre = nombreInput.value.trim();
+    const apellido = apellidoInput.value.trim();
+    const cargo = cargoInput.value.trim();
+    const correo = correoInput.value.trim();
+
+    validarFormulario(nombre, apellido, cargo, correo);
+
+});
