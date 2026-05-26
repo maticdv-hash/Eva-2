@@ -70,6 +70,38 @@ function eliminarColaborador(indice) {
 
 }
 
+function buscarColaboradores(textoBusqueda) {
+
+    const colaboradoresFiltrados = colaboradores.filter(function(colaborador) {
+
+        return (
+            colaborador.nombre.toLowerCase().includes(textoBusqueda.toLowerCase()) ||
+            colaborador.cargo.toLowerCase().includes(textoBusqueda.toLowerCase())
+        );
+
+    });
+
+    tablaColaboradores.innerHTML = "";
+
+    colaboradoresFiltrados.forEach(function(colaborador, indice) {
+
+        tablaColaboradores.innerHTML += `
+            <tr>
+                <td>${colaborador.nombre}</td>
+                <td>${colaborador.apellido}</td>
+                <td>${colaborador.cargo}</td>
+                <td>${colaborador.correo}</td>
+                <td>
+                    <button onclick="eliminarColaborador(${indice})">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+
+}
+
 formulario.addEventListener("submit", function(event) {
 
     event.preventDefault();
@@ -96,4 +128,16 @@ formulario.addEventListener("submit", function(event) {
     
     console.log(colaboradores);
 }
+});
+
+busquedaInput.addEventListener("input", function() {
+
+    const textoBusqueda = busquedaInput.value.trim();
+
+    if (textoBusqueda === "") {
+        mostrarColaboradores();
+    } else {
+        buscarColaboradores(textoBusqueda);
+    }
+
 });
