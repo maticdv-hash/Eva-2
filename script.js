@@ -86,12 +86,19 @@ function buscarColaboradores(textoBusqueda) {
     });
 
     if (colaboradoresFiltrados.length === 0) {
+        
         mensajeBusqueda.textContent = "No se encontraron colaboradores";
+        
         tablaColaboradores.innerHTML = "";
+        
+        contenedorTabla.style.display = "none";
+        
         return;
     }
     
     mensajeBusqueda.textContent = "";
+    
+    contenedorTabla.style.display = "block";
 
     tablaColaboradores.innerHTML = "";
 
@@ -133,28 +140,49 @@ formulario.addEventListener("submit", function(event) {
     };
 
     colaboradores.push(colaborador);
-
+    
     mostrarColaboradores();
-
+    
     formulario.reset();
+    
+    mensajeBusqueda.textContent = "";
+    
+    busquedaInput.value = "";
+    
+    contenedorTabla.style.display = "none";
     
     console.log(colaboradores);
 }
 });
 
+busquedaInput.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+
+        const textoBusqueda = busquedaInput.value.trim();
+
+        if (textoBusqueda === "") {
+
+            mensajeBusqueda.textContent = "";
+            contenedorTabla.style.display = "none";
+
+        } else {
+
+            buscarColaboradores(textoBusqueda);
+
+        }
+
+    }
+
+});
+
 busquedaInput.addEventListener("input", function() {
 
-    const textoBusqueda = busquedaInput.value.trim();
+    if (busquedaInput.value.trim() === "") {
 
-    if (textoBusqueda === "") {
-        
+        mensajeBusqueda.textContent = "";
         contenedorTabla.style.display = "none";
-    
-    } else {
-        
-        contenedorTabla.style.display = "block";
-        
-        buscarColaboradores(textoBusqueda);
-    
+
     }
+
 });
