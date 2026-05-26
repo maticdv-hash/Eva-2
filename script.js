@@ -14,6 +14,8 @@ const tablaColaboradores = document.getElementById("tablaColaboradores");
 
 const busquedaInput = document.getElementById("busqueda");
 
+const contenedorTabla = document.getElementById("contenedorTabla");
+
 function validarFormulario(nombre, apellido, cargo, correo) {
 
     if (!nombre || !apellido || !cargo || !correo) {
@@ -135,9 +137,14 @@ busquedaInput.addEventListener("input", function() {
     const textoBusqueda = busquedaInput.value.trim();
 
     if (textoBusqueda === "") {
-        mostrarColaboradores();
+        
+        contenedorTabla.style.display = "none";
+    
     } else {
+        
+        contenedorTabla.style.display = "block";
+        
         buscarColaboradores(textoBusqueda);
+    
     }
-
 });
