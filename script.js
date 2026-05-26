@@ -11,3 +11,5 @@ const correoInput = document.getElementById("correo");
 const mensajeError = document.getElementById("mensajeError");
 
 const tablaColaboradores = document.getElementById("tablaColaboradores");
+
+const busquedaInput = document.getElementById("busqueda");
