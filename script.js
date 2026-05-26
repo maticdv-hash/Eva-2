@@ -14,25 +14,20 @@ const tablaColaboradores = document.getElementById("tablaColaboradores");
 
 const busquedaInput = document.getElementById("busqueda");
 
-function validarFormulario(nombre, apellido, cargo, correo) {
+if (validarFormulario(nombre, apellido, cargo, correo)) {
 
-    if (!nombre || !apellido || !cargo || !correo) {
-        mensajeError.textContent = "Todos los campos son obligatorios";
-        return false;
-    }
+    const colaborador = {
+        nombre: nombre,
+        apellido: apellido,
+        cargo: cargo,
+        correo: correo
+    };
 
-    if (!correo.includes("@")) {
-        mensajeError.textContent = "Ingrese un correo válido";
-        return false;
-    }
+    colaboradores.push(colaborador);
 
-    if (!correo.endsWith("@empresa.cl")) {
-        mensajeError.textContent = "El correo debe pertenecer al dominio @empresa.cl";
-        return false;
-    }
+    formulario.reset();
 
-    mensajeError.textContent = "";
-    return true;
+    console.log(colaboradores);
 }
 
 formulario.addEventListener("submit", function(event) {
