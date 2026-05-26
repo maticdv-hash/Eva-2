@@ -39,7 +39,7 @@ function mostrarColaboradores() {
 
     tablaColaboradores.innerHTML = "";
 
-    colaboradores.forEach(function(colaborador) {
+    colaboradores.forEach(function(colaborador, indice) {
 
         tablaColaboradores.innerHTML += `
             <tr>
@@ -47,11 +47,26 @@ function mostrarColaboradores() {
                 <td>${colaborador.apellido}</td>
                 <td>${colaborador.cargo}</td>
                 <td>${colaborador.correo}</td>
-                <td>Eliminar</td>
+                <td>
+
+                <button onclick="eliminarColaborador(${indice})">
+                    Eliminar
+                </button>
+
+                </td>
+                
             </tr>
         `;
 
     });
+
+}
+
+function eliminarColaborador(indice) {
+
+    colaboradores.splice(indice, 1);
+
+    mostrarColaboradores();
 
 }
 
