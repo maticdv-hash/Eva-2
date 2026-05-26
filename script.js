@@ -35,6 +35,26 @@ function validarFormulario(nombre, apellido, cargo, correo) {
     return true;
 }
 
+function mostrarColaboradores() {
+
+    tablaColaboradores.innerHTML = "";
+
+    colaboradores.forEach(function(colaborador) {
+
+        tablaColaboradores.innerHTML += `
+            <tr>
+                <td>${colaborador.nombre}</td>
+                <td>${colaborador.apellido}</td>
+                <td>${colaborador.cargo}</td>
+                <td>${colaborador.correo}</td>
+                <td>Eliminar</td>
+            </tr>
+        `;
+
+    });
+
+}
+
 formulario.addEventListener("submit", function(event) {
 
     event.preventDefault();
@@ -55,8 +75,10 @@ formulario.addEventListener("submit", function(event) {
 
     colaboradores.push(colaborador);
 
-    formulario.reset();
+    mostrarColaboradores();
 
+    formulario.reset();
+    
     console.log(colaboradores);
 }
 });
