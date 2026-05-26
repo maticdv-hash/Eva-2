@@ -87,3 +87,9 @@ main {
     max-width: 900px;
     margin: 0 auto;
 }
+
+#mensajeBusqueda {
+    text-align: center;
+    font-weight: bold;
+    color: #e74c3c;
+}
