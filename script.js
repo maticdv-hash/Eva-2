@@ -14,7 +14,37 @@ const tablaColaboradores = document.getElementById("tablaColaboradores");
 
 const busquedaInput = document.getElementById("busqueda");
 
-if (validarFormulario(nombre, apellido, cargo, correo)) {
+function validarFormulario(nombre, apellido, cargo, correo) {
+
+    if (!nombre || !apellido || !cargo || !correo) {
+        mensajeError.textContent = "Todos los campos son obligatorios";
+        return false;
+    }
+
+    if (!correo.includes("@")) {
+        mensajeError.textContent = "Ingrese un correo válido";
+        return false;
+    }
+
+    if (!correo.endsWith("@empresa.cl")) {
+        mensajeError.textContent = "El correo debe pertenecer al dominio @empresa.cl";
+        return false;
+    }
+
+    mensajeError.textContent = "";
+    return true;
+}
+
+formulario.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const nombre = nombreInput.value.trim();
+    const apellido = apellidoInput.value.trim();
+    const cargo = cargoInput.value.trim();
+    const correo = correoInput.value.trim();
+
+    if (validarFormulario(nombre, apellido, cargo, correo)) {
 
     const colaborador = {
         nombre: nombre,
@@ -29,16 +59,4 @@ if (validarFormulario(nombre, apellido, cargo, correo)) {
 
     console.log(colaboradores);
 }
-
-formulario.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-    const nombre = nombreInput.value.trim();
-    const apellido = apellidoInput.value.trim();
-    const cargo = cargoInput.value.trim();
-    const correo = correoInput.value.trim();
-
-    validarFormulario(nombre, apellido, cargo, correo);
-
 });
