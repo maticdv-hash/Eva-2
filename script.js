@@ -43,7 +43,7 @@ function mostrarColaboradores() {
 
     tablaColaboradores.innerHTML = "";
 
-    colaboradores.forEach(function(colaborador  ) {
+    colaboradores.forEach(function(colaborador) {
 
         tablaColaboradores.innerHTML += `
             <tr>
