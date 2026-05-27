@@ -43,7 +43,7 @@ function mostrarColaboradores() {
 
     tablaColaboradores.innerHTML = "";
 
-    colaboradores.forEach(function(colaborador, indice) {
+    colaboradores.forEach(function(colaborador  ) {
 
         tablaColaboradores.innerHTML += `
             <tr>
@@ -53,7 +53,7 @@ function mostrarColaboradores() {
                 <td>${colaborador.correo}</td>
                 <td>
 
-                <button onclick="eliminarColaborador(${indice})">
+                <button onclick="eliminarColaborador('${colaborador.correo}')">
                     Eliminar
                 </button>
 
@@ -66,11 +66,17 @@ function mostrarColaboradores() {
 
 }
 
-function eliminarColaborador(indice) {
+function eliminarColaborador(correo) {
 
-    colaboradores.splice(indice, 1);
+    colaboradores = colaboradores.filter(function(colaborador) {
 
-    mostrarColaboradores();
+        return colaborador.correo !== correo;
+
+    });
+
+    tablaColaboradores.innerHTML = "";
+
+    contenedorTabla.style.display = "none";
 
 }
 
@@ -102,7 +108,7 @@ function buscarColaboradores(textoBusqueda) {
 
     tablaColaboradores.innerHTML = "";
 
-    colaboradoresFiltrados.forEach(function(colaborador, indice) {
+    colaboradoresFiltrados.forEach(function(colaborador) {
 
         tablaColaboradores.innerHTML += `
             <tr>
@@ -111,7 +117,7 @@ function buscarColaboradores(textoBusqueda) {
                 <td>${colaborador.cargo}</td>
                 <td>${colaborador.correo}</td>
                 <td>
-                    <button onclick="eliminarColaborador(${indice})">
+                    <button onclick="eliminarColaborador('${colaborador.correo}')">
                         Eliminar
                     </button>
                 </td>
