@@ -170,7 +170,6 @@ formulario.addEventListener("submit", function(event) {
     
     contenedorTabla.style.display = "none";
     
-    console.log(colaboradores);
 }
 });
 
